@@ -136,19 +136,7 @@ opt_selection_count    = 'off'
 
 def superPrint(priority, title, message):
     """Print messages through terminal, zenity or kdialog"""
-    if opt_gui == 'gnome':
-        subprocess.call(['zenity', '--width=' + str(opt_gui_width), '--' + priority, '--title=' + title, '--text=' + message])
-    elif opt_gui == 'kde':
-        # Adapt to kdialog
-        message = message.replace("\n", "<br>")
-        message = message.replace('\\"', '"')
-        if priority == 'warning':
-            priority = 'sorry'
-        elif priority == 'info':
-            priority = 'msgbox'
-
-        subprocess.call(['kdialog', '--geometry=' + str(opt_gui_width) + 'x' + str(opt_gui_height), '--title=' + title, '--' + priority + '=' + message])
-    else:
+    if True:
         # Clean up formating tags from the zenity messages
         message = message.replace("\n\n", "\n")
         message = message.replace('\\"', '"')
